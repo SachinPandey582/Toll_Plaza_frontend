@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+/* ===== FIX Angular Material MDC input visibility ===== */
+
+:root {
+  --mdc-outlined-text-field-outline-color: #9e9e9e;
+  --mdc-outlined-text-field-focus-outline-color: #3f51b5;
+  --mdc-outlined-text-field-input-text-color: #000000;
+  --mdc-outlined-text-field-label-text-color: #555555;
+  --mdc-outlined-text-field-hover-outline-color: #616161;
+  --mdc-outlined-text-field-placeholder-text-color: #757575;
+  --mat-select-enabled-trigger-text-color: #000000;
+  --mat-option-selected-state-label-text-color: #a4a4a4;
+}

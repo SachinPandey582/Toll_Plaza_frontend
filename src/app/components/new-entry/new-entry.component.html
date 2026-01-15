@@ -1,0 +1,53 @@
+<mat-card class="entry-card">
+  <mat-card-title>New Vehicle Entry</mat-card-title>
+
+  <form [formGroup]="entryForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>License Plate</mat-label>
+      <input aria-label="input" matInput formControlName="licensePlate" />
+      <mat-error *ngIf="entryForm.get('licensePlate')?.invalid">
+        License plate is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Vehicle Type</mat-label>
+      <mat-select formControlName="vehicleType">
+        <mat-option *ngFor="let type of vehicleTypes" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="entryForm.get('vehicleType')?.invalid">
+        Vehicle type is required
+      </mat-error>
+    </mat-form-field>
+
+    <div class="toggle-container">
+      <mat-slide-toggle formControlName="isGovernment">
+        Government Vehicle
+      </mat-slide-toggle>
+    </div>
+
+    <div class="toggle-container">
+      <mat-slide-toggle formControlName="isOfficial">
+        Official Vehicle
+      </mat-slide-toggle>
+    </div>
+
+    <div class="toll-fee">
+      Toll Fee: <strong>{{ calculatedToll | currency }}</strong>
+      <span *ngIf="calculatedToll === 0 && (entryForm.get('isGovernment')?.value || entryForm.get('isOfficial')?.value)" class="free-toll">
+        (Free - {{ entryForm.get('isGovernment')?.value ? 'Government' : 'Official' }})
+      </span>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="entryForm.invalid"
+    >
+      Add Entry
+    </button>
+  </form>
+</mat-card>

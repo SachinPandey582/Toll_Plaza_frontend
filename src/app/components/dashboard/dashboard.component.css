@@ -1,0 +1,127 @@
+.table-container {
+  padding: 16px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.paid {
+  color: green;
+  font-weight: 600;
+}
+
+.pending {
+  color: orange;
+  font-weight: 600;
+}
+
+.violation {
+  color: red;
+  font-weight: 600;
+}
+.filter-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+
+mat-form-field {
+  min-width: 220px;
+  flex: 1;
+}
+/* Filter container */
+.filter-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+/* Material form fields */
+.filter-container mat-form-field {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* Make input & select same height */
+.filter-container .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Improve spacing on small screens */
+@media (max-width: 600px) {
+  .filter-container {
+    flex-direction: column;
+  }
+
+  .filter-container mat-form-field {
+    width: 100%;
+  }
+}
+/* FILTER CONTAINER */
+.filter-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Material form field base */
+.filter-container mat-form-field {
+  flex: 1;
+  min-width: 240px;
+}
+
+/* Force input text color */
+.filter-container input.mat-mdc-input-element {
+  color: #000 !important;
+}
+
+/* Force select value color */
+.filter-container .mat-mdc-select-value {
+  color: #000 !important;
+}
+
+/* Label color */
+.filter-container .mat-mdc-floating-label {
+  color: #555 !important;
+}
+
+/* Outline border color */
+.filter-container .mdc-notched-outline__leading,
+.filter-container .mdc-notched-outline__notch,
+.filter-container .mdc-notched-outline__trailing {
+  border-color: #999 !important;
+}
+
+/* On focus */
+.filter-container .mat-mdc-form-field.mat-focused
+  .mdc-notched-outline__leading,
+.filter-container .mat-mdc-form-field.mat-focused
+  .mdc-notched-outline__notch,
+.filter-container .mat-mdc-form-field.mat-focused
+  .mdc-notched-outline__trailing {
+  border-color: #3f51b5 !important;
+}
+
+/* Mobile stacking */
+@media (max-width: 600px) {
+  .filter-container {
+    flex-direction: column;
+  }
+
+  .filter-container mat-form-field {
+    width: 100%;
+  }
+}

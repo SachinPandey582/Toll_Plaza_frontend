@@ -1,0 +1,33 @@
+.entry-card {
+  max-width: 500px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-select {
+  color: black;
+}
+
+.toggle-container {
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.toll-fee {
+  margin: 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.free-toll {
+  font-size: 14px;
+  color: #4caf50;
+  font-weight: normal;
+  margin-left: 8px;
+}

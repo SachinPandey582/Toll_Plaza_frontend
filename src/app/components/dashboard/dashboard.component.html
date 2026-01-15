@@ -1,0 +1,104 @@
+<!-- FILTERS FIRST -->
+<div class="filter-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Search License Plate</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchText"
+      (ngModelChange)="applyFilters()"
+      placeholder="ABC-123"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Vehicle Type</mat-label>
+    <mat-select
+      [(ngModel)]="selectedVehicleType"
+      (ngModelChange)="applyFilters()"
+    >
+      <mat-option *ngFor="let type of vehicleTypes" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- TABLE BELOW -->
+<div class="table-container">
+  <table mat-table [dataSource]="filteredEntries" class="mat-elevation-z8">
+    <!-- License Plate -->
+    <ng-container matColumnDef="licensePlate">
+      <th mat-header-cell *matHeaderCellDef>License Plate</th>
+      <td mat-cell *matCellDef="let row">{{ row.licensePlate }}</td>
+    </ng-container>
+
+    <!-- Vehicle Type -->
+    <ng-container matColumnDef="vehicleType">
+      <th mat-header-cell *matHeaderCellDef>Vehicle Type</th>
+      <td mat-cell *matCellDef="let row">{{ row.vehicleType }}</td>
+    </ng-container>
+
+    <!-- Timestamp -->
+    <ng-container matColumnDef="timestamp">
+      <th mat-header-cell *matHeaderCellDef>Time</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.timestamp | date : "short" }}
+      </td>
+    </ng-container>
+
+    <!-- Toll Fee -->
+    <ng-container matColumnDef="tollFee">
+      <th mat-header-cell *matHeaderCellDef>Toll Fee</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.tollFee | currency }}
+      </td>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row">
+        <span [class]="row.status.toLowerCase()">
+          {{ row.status }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button
+          mat-icon-button
+          matTooltip="Flag as Violation"
+          color="warn"
+          *ngIf="row.status !== 'Violation'"
+          (click)="flagAsViolation(row)"
+        >
+          <mat-icon>flag</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Mark as Paid"
+          color="primary"
+          *ngIf="row.status !== 'Paid'"
+          (click)="markAsPaid(row)"
+        >
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Mark as Pending"
+          color="accent"
+          *ngIf="row.status !== 'Pending'"
+          (click)="markAsPending(row)"
+        >
+          <mat-icon>schedule</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
